@@ -1,6 +1,6 @@
 
 import React from 'react';
-import { Button } from 'react-bootstrap';
+import { Button, Card } from 'react-bootstrap';
 
 const ShowCountry = (props) => {
     const {name,capital,flag}=props.country
@@ -8,7 +8,7 @@ const ShowCountry = (props) => {
         const formdata = new FormData();
         formdata.append('country',name)
         formdata.append('capital',capital)
-        fetch('http://localhost:8000/addInformation',{
+        fetch('https://still-scrubland-68562.herokuapp.com/addInformation',{
             method: 'POST',
             body: formdata
         })
@@ -19,12 +19,19 @@ const ShowCountry = (props) => {
 
     }
     return (
-        <div>
-            <img src={flag} height="50px" width="50px"></img>
-            <h1>{name}</h1>
-            <p>{capital}</p>
-            <Button className="btn btn-primary" onClick={handleAdd}>add</Button>
-        </div>
+       <div className="mt-5">
+        <Card style={{ width: '28rem' }}>
+        <Card.Img  src={flag} height="200px" width="50px" variant="top" />
+        <Card.Body>
+          <Card.Title>{name}</Card.Title>
+          <Card.Text>
+              CAPITAL : 
+          { capital}
+          </Card.Text>
+          <Button className="btn btn-primary" onClick={handleAdd}>add to your fav. list</Button>
+        </Card.Body>
+      </Card>
+      </div>
     );
 };
 

@@ -7,7 +7,9 @@ const FavouriteCountry = (props) => {
     const handleDelete = () => {
         // const formData = new FormData()
         // formData.append("id", id)
-        fetch(`http://localhost:8000/delete/${_id}`, {
+        const alertDelete = window.confirm("do you want to delete")
+        alertDelete &&
+        fetch(`https://still-scrubland-68562.herokuapp.com/delete/${_id}`, {
             method: 'DELETE'
             // body: formData
         })
@@ -17,7 +19,7 @@ const FavouriteCountry = (props) => {
             })
     }
     return (
-        <div>
+        <div className="mb-5 border border-secondary center">
             <h1>{country}</h1>
             <p>{capital}</p>
             <Button className="btn btn-danger" onClick={handleDelete}>delete</Button>

@@ -15,7 +15,7 @@ const AllCountry = () => {
     }, [])
 
     useEffect(() => {
-        fetch('http://localhost:8000/readOrder')
+        fetch('https://still-scrubland-68562.herokuapp.com/readOrder')
             .then(res => res.json())
             .then(result => {
                 setfavcountry(result)
@@ -23,7 +23,7 @@ const AllCountry = () => {
     }, [])
 
         const handleShow = () => {
-            fetch('http://localhost:8000/readOrder')
+            fetch('https://still-scrubland-68562.herokuapp.com/readOrder')
             .then(res => res.json())
             .then(result => {
                 setfavcountry(result)
@@ -32,12 +32,14 @@ const AllCountry = () => {
     return (
         <div className="container mt-5">
             <div className="row">
-                <div className="col-md-6">
+                <div className="col-md-7">
+                    <h3 className = "text center mb-5">All Country Information</h3>
                     {
                         country.map(country => <ShowCountry handleShow={handleShow} country={country}></ShowCountry>)
                     }
                 </div>
-                <div className="col-md-6">
+                <div className="col-md-5">
+                <h3 className = "text center mb-5">Favourite Country </h3>
                     {
                         favcountry.map(country =><FavouriteCountry handleShow={handleShow} country={country}></FavouriteCountry>)
                     }
